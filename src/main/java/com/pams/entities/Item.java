@@ -1,24 +1,26 @@
 package com.pams.entities;
+
 import javax.persistence.*;
+
 /**
  * Created by MattBrown on 12/8/15.
  */
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "items")
+public class Item {
     @Id
     @GeneratedValue
     int id;
 
     @Column(nullable = false)
-    public String username;
+    String serialNumber;
 
     @Column(nullable = false)
-    public String password;
+    String productModel;
 
     @Column(nullable = false)
-    public int accessLevel;
+    String companyUser;
 
-    @Column(nullable = false)
-    public String email;
+    //many items to one user
 }
+
