@@ -6,6 +6,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+    public enum AccessLevel{
+        ADMIN,
+        COMPANY_USER,
+        RETAILER_USER,
+        JOE_USER
+    }
     @Id
     @GeneratedValue
     int id;
@@ -17,7 +23,22 @@ public class User {
     public String password;
 
     @Column(nullable = false)
-    public int accessLevel;
+    public String companyName;
+
+    @Column(nullable = false)
+    public String address;
+
+    @Column(nullable = false)
+    public String city;
+
+    @Column(nullable = false)
+    public String state;
+
+    @Column(nullable = false)
+    public int zip;
+
+    @Column(nullable = false)
+    public AccessLevel accessLevel;
 
     @Column(nullable = false)
     public String email;
