@@ -1,27 +1,21 @@
 package com.pams.controllers;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pams.entities.User;
-import com.pams.services.ItemRepository;
 import com.pams.services.UserRepository;
 import com.pams.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 /**
  * Created by MattBrown on 12/8/15.
  */
-@RestController
 public class PAMController {
 
     @Autowired
     UserRepository users;
-
-    @Autowired
-    ItemRepository items;
 
     /*@PostConstruct
     public void loadData(){
