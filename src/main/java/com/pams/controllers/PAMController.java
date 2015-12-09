@@ -4,7 +4,9 @@ import com.pams.entities.User;
 import com.pams.services.UserRepository;
 import com.pams.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by MattBrown on 12/8/15.
  */
+@RestController
 public class PAMController {
 
     @Autowired
@@ -25,7 +28,6 @@ public class PAMController {
 
     }*/
 
-
     @RequestMapping("/login")
     public void login(
             HttpSession session,
@@ -38,8 +40,8 @@ public class PAMController {
         if (user == null){
             user = new User();
             user.username = username;
-            user.password = password;
-            user.accessLevel = accessLevel;
+            user.password = PasswordHash.createHash(password);
+            user.accessLevel = Integer.valueOf(accessLevel);
             user.email = email;
             users.save(user);
         }
